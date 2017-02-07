@@ -1,0 +1,15 @@
+// $Id$
+// vim:ft=javascript
+
+var STEAMCLIENT_EXT_NAME="steamclient";
+var STEAMCLIENT_EXT_API="steamclient.cc steam.cc";
+
+ARG_WITH("steamclient", "Steam API Support", "no");
+
+if( PHP_STEAMCLIENT != "no" ) {
+	if (CHECK_LIB("steam_api64.lib", "steamclient", PHP_STEAMCLIENT) ) {
+		EXTENSION(STEAMCLIENT_EXT_NAME, STEAMCLIENT_EXT_API, PHP_STEAMCLIENT_SHARED, "/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1");
+
+		PHP_INSTALL_HEADERS("ext/steamclient/", "php_steamclient.h");
+	}
+}
